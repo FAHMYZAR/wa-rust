@@ -1,0 +1,25 @@
+services:
+  wa-rust:
+    container_name: wa-rust
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: wa-rust:latest
+    restart: unless-stopped
+    init: true
+    environment:
+      TZ: ${TZ:-Asia/Jakarta}
+      RUST_LOG: ${RUST_LOG:-info}
+      OWNER_PREFIX: ${OWNER_PREFIX:-/}
+      USER_PREFIX: ${USER_PREFIX:-.}
+      PAIR_PHONE: ${PAIR_PHONE:-}
+      OCR_API_KEY: ${OCR_API_KEY:-helloworld}
+      RESITA_API_KEY: ${RESITA_API_KEY:-}
+      LOLHUMAN_API_KEY: ${LOLHUMAN_API_KEY:-}
+      RMBG_FUZZ: ${RMBG_FUZZ:-25%}
+    volumes:
+      - wa_rust_data:/app/data
+
+volumes:
+  wa_rust_data:
+    name: wa_rust_data

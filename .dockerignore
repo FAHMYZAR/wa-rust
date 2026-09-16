@@ -1,0 +1,8 @@
+target
+.git
+.github
+.env
+*.db
+disk/tmp
+CLAUDE.md
+AGENTS.md
