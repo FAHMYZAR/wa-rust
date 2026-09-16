@@ -6,7 +6,7 @@ services:
       dockerfile: Dockerfile
     image: wa-rust:latest
     restart: unless-stopped
-    init: true
+    network_mode: host
     environment:
       TZ: ${TZ:-Asia/Jakarta}
       RUST_LOG: ${RUST_LOG:-info}

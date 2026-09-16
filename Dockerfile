@@ -22,14 +22,11 @@ RUN apt-get update \
         fonts-dejavu-core \
         ca-certificates \
         tzdata \
-    && rm -rf /var/lib/apt/lists/* \
-    && useradd --create-home --home-dir /app bot
+    && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 COPY --from=builder /build/target/release/wa-rust /app/wa-rust
-RUN mkdir -p /app/data/disk/tmp && chown -R bot:bot /app
 
-USER bot
 ENV RUST_LOG=info
 
 WORKDIR /app/data
