@@ -9,6 +9,7 @@ RUN apt-get update \
 WORKDIR /build
 COPY Cargo.toml Cargo.lock ./
 COPY src ./src
+COPY disk ./disk
 RUN CARGO_TARGET_DIR=/build/target cargo build --release
 
 FROM debian:bookworm-slim
