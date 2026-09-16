@@ -3,5 +3,4 @@
 .env
 whatsapp.db
 whatsapp.db-*
-Cargo.lock
 warns.db
