@@ -1,22 +1,28 @@
 # syntax=docker/dockerfile:1
-FROM rust:1.87-alpine AS builder
+# Build with glibc for broader crate compatibility. The image still runs on
+# an Alpine VPS because the Docker host and container base are independent.
+FROM rust:1.87-bookworm AS builder
 
-RUN apk add --no-cache musl-dev build-base pkgconfig openssl-dev
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends pkg-config libssl-dev \
+    && rm -rf /var/lib/apt/lists/*
 WORKDIR /build
 COPY Cargo.toml Cargo.lock ./
 COPY src ./src
 RUN CARGO_TARGET_DIR=/build/target cargo build --release
 
-FROM alpine:3.22
+FROM debian:bookworm-slim
 
-RUN apk add --no-cache \
-    ffmpeg \
-    imagemagick \
-    libwebp-tools \
-    ttf-dejavu \
-    ca-certificates \
-    tzdata \
-    && adduser -D -h /app bot
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        ffmpeg \
+        imagemagick \
+        webp \
+        fonts-dejavu-core \
+        ca-certificates \
+        tzdata \
+    && rm -rf /var/lib/apt/lists/* \
+    && useradd --create-home --home-dir /app bot
 
 WORKDIR /app
 COPY --from=builder /build/target/release/wa-rust /app/wa-rust
