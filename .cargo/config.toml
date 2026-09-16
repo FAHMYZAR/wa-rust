@@ -1,0 +1,4 @@
+[build]
+# /storage/emulated is mounted noexec on Android, so build scripts can't run
+# from the default target dir. Keep compiled output on Termux's data partition.
+target-dir = "/data/data/com.termux/files/home/.targets/wa-rust"

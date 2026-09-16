@@ -1,0 +1,27 @@
+[package]
+name = "wa-rust"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+whatsapp-rust = { version = "0.7", default-features = false, features = [
+    "sqlite-storage",
+    "tokio-transport",
+    "tokio-runtime",
+    "ureq-client",
+    "tokio-native",
+    "signal",
+] }
+tokio = { version = "1", features = ["macros", "rt-multi-thread", "signal"] }
+async-trait = "0.1"
+anyhow = "1"
+log = "0.4"
+env_logger = "0.11"
+dotenvy = "0.15"
+qrcode = { version = "0.14", default-features = false }
+rusqlite = { version = "0.39", default-features = false, features = ["bundled"] }
+ureq = { version = "3.4.2", features = ["multipart", "json"] }
+serde = "1.0.229"
+serde_json = "1.0.151"
+urlencoding = "2.1.3"
+base64 = "0.22"

@@ -1,0 +1,16 @@
+pub mod add;
+pub mod adminlist;
+pub mod close;
+pub mod demote;
+pub mod getjid;
+pub mod groupinfo;
+pub mod grouplink;
+pub mod hidetag;
+pub mod kick;
+pub mod open;
+pub mod promote;
+pub mod resetlink;
+pub mod tagall;
+pub mod unwarn;
+pub mod warn;
+pub mod warnlist;
