@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 # Build with glibc for broader crate compatibility. The image still runs on
 # an Alpine VPS because the Docker host and container base are independent.
-FROM rust:1.87-bookworm AS builder
+FROM rust:bookworm AS builder
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends pkg-config libssl-dev \
