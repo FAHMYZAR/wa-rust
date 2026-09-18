@@ -3,6 +3,7 @@ pub mod formatter;
 pub mod group;
 pub mod http;
 pub mod media;
+pub mod mode;
 pub mod qr;
 pub mod system;
 pub mod warn;
