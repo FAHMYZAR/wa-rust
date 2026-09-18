@@ -20,7 +20,7 @@ pub fn build_registry() -> Arc<FeatureRegistry> {
         Arc::new(general::tr::TranslateFeature),
         Arc::new(general::hug::HugFeature),
         Arc::new(general::logs::LogsFeature),
-							Arc::new(general::setmode::SetModeFeature)
+							Arc::new(general::setmode::SetModeFeature),
         Arc::new(group::tagall::TagallFeature),
         Arc::new(group::hidetag::HidetagFeature),
         Arc::new(group::grouplink::GrouplinkFeature),
